@@ -1,5 +1,6 @@
 from math import sqrt
 from matplotlib import pyplot as plt
+import itertools
 
 d = 2
 q = -2.57
@@ -14,18 +15,17 @@ A = [[q, 1, 0, 0, 0],
     [0, 1, -2, 1, 0],
     [0, 0, 1, -2, 1],
     [0, 0, 0, 1, q]]
-    
+
 b = [0, d, d, d, 0]
 
 def main():
   n = len(A)
   w = w_min
-  
+
   w_array = []
   iteration_array = []
-  
+
   while w < w_max:
-    print(w)
     stop = False
     x_curr = [0 for _ in range(n)]
     iteration = 0
@@ -38,18 +38,18 @@ def main():
         x = sum1 + sum2 + c
         x_new = w * x + (1 - w) * x_prev[i]
         x_curr[i] = x_new
-          
+
       error = sqrt(sum((x_curr[i] - x_prev[i]) ** 2 for i in range(n)))
       stop = error <= eps
       iteration += 1
-    
+
     w_array.append(w)
     iteration_array.append(iteration)
-    plt.plot(w_array, iteration_array, color='green', marker='o', linestyle='solid')
-    
+    plt.plot(w_array, iteration_array, color='blue', marker='o', linestyle='solid')
+
     w = round(w + h, 2)
-    
-  print(x_curr)
+
+  print(['x{}: {}'.format(i + 1, x) for i, x in enumerate(x_curr)])
   plt.show()
 
 if __name__ == '__main__':

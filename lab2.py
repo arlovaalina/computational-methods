@@ -59,16 +59,16 @@ def calc_error(c):
 
 def main():
     c = gauss(G, y)
+    print(c)
     P = [pog(c, x) for x in x_array]
     function_result = [f(x) for x in x_error_array]
     polynom_result = [pog(c, x) for x in x_error_array]
     error = calc_error(c)
-    print(error)
 
-    plt.plot(function_result)
-    plt.plot(polynom_result)
+    plt.plot(function_result, color="red")
+    plt.plot(polynom_result, color="blue")
     plt.show()
-    
+
 
 if __name__ == '__main__':
 	main()
