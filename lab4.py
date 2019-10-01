@@ -29,5 +29,13 @@ def main():
   result = wegstein(_f)
   print(result)
 
+  n = 40
+  h = (b - a) / n
+  x_array = [a + h * i for i in range (0, n + 1)]
+  f = [_f(x) for x in x_array]
+
+  plt.plot(x_array, f)
+  plt.show()
+
 if __name__ == '__main__':
 	main()

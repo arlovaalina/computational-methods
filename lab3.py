@@ -71,7 +71,7 @@ def integral(precision, f):
 def main():
   x_array = [_x(j) for j in range(j_min, j_max + 1)]
 
-  first_precise = [round(_first_derivative_precise(x), 4) for x in x_array]
+  first_precise = [_first_derivative_precise(x) for x in x_array]
   first_h1 = [first_derivative(x, h1, _f) for x in x_array]
   first_h2 = [first_derivative(x, h2, _f) for x in x_array]
   first_h3 = [first_derivative(x, h3, _f) for x in x_array]
@@ -86,12 +86,6 @@ def main():
   integral_precision3 = integral(precision3, _f)
 
   f = [_f(x) for x in x_array]
-
-  print(f)
-  print(first_precise)
-  print(first_h1)
-  print(first_h2)
-  print(first_h3)
 
   plt.figure("First Derivative")
   plt.plot(first_precise, color="green")
